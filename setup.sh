@@ -5,8 +5,7 @@
 
 # Ideally It's possible to parse any wikipedia dump as long as the language can be encoded in UTF-8 with python.
 # I have completed testing on Chinese, English, German, Frech, Dutch Wikipedia.
-# As the English Wikipedia dump is too big, here we use the much smaller Wikibooks dump
-WIKI_URL=http://dumps.wikimedia.org/enwikibooks/20130826/enwikibooks-20130826-pages-articles.xml.bz2
+WIKI_URL=http://dumps.wikimedia.org/enwiki/20130805/enwiki-20130805-pages-meta-current1.xml-p000000010p000010000.bz2
 
 #download wikipedia
 mkdir data
