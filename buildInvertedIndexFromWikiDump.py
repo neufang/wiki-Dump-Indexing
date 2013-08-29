@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+# =============================================================================
+# Modified by Fang Xu (allxufang@gmail.com)
+# add indexing in OutputSplitter
 # =============================================================================
 #  Version: 1.5 (Oct 17, 2009)
 #  Author: Antonio Fuschetto (fuschett@di.unipi.it), University of Pisa
@@ -480,7 +482,7 @@ class OutputSplitter:
     def close(self):
         self.__close_cur_file()
         self.createInvertedIndex()
-        with open(self.__file_name+".pkl", 'w') as out:
+        with open(self.__file_name + ".pkl", 'w') as out:
             pickle.dump(self.__inv_index, out)
         self.__texts.clear()
         self.__words.clear()
@@ -498,7 +500,7 @@ class OutputSplitter:
         if self.__compress:
             pass
         else:
-            return open(self.__file_name, 'w')
+            return open(self.__file_name + "*.xml", 'w')
 
     def __close_cur_file(self):
         self.__out_file.close()
@@ -602,7 +604,7 @@ def main():
         sys.exit(1)
 
     compress = False
-    file_size = 500 * 1024
+    file_size = 50000 * 1024
     output_dir = '.'
 
     for opt, arg in opts:
