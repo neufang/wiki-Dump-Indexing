@@ -457,11 +457,6 @@ class OutputSplitter:
         
         text_len = len(text)
         if self.__cur_file_size + text_len / 2 > self.__max_file_size:
-            #write xml pages to file
-            self.__close_cur_file()
-            self.__out_file = self.__open_next_file()
-            self.__cur_file_size = 0
-
             #serialize the inverted index to a pickle
             self.createInvertedIndex()
             with open(self.__file_name+".pkl", 'w') as out:
@@ -469,7 +464,11 @@ class OutputSplitter:
             self.__texts.clear()
             self.__words.clear()
             self.__inv_index.clear()
-
+            
+            #write xml pages to file
+            self.__close_cur_file()
+            self.__out_file = self.__open_next_file()
+            self.__cur_file_size = 0
             
         self.__out_file.write(text)
         self.__cur_file_size += text_len
